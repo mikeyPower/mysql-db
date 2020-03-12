@@ -58,3 +58,24 @@ Which will both return the following result which is the quotes table
     4 rows in set (0.00 sec)
     
     
+Now in order to ensure that only a single record is added daily and no more we are going to make the quote_date column a UNIQUE column to ensure duplicates are not added
+
+    mysql> alter table quotes
+        -> ADD CONSTRAINT date_unique UNIQUE (quote_date);
+    Query OK, 0 rows affected (0.09 sec)
+    Records: 0  Duplicates: 0  Warnings: 0
+    
+We can now see this represented in the table below
+
+    mysql> describe quotes;
+    +------------+--------------+------+-----+---------+----------------+
+    | Field      | Type         | Null | Key | Default | Extra          |
+    +------------+--------------+------+-----+---------+----------------+
+    | quote_id   | int(11)      | NO   | PRI | NULL    | auto_increment |
+    | quote      | varchar(255) | NO   |     | NULL    |                |
+    | quote_date | date         | YES  | UNI | NULL    |                |
+    | author     | varchar(255) | NO   |     | NULL    |                |
+    +------------+--------------+------+-----+---------+----------------+
+    4 rows in set (0.00 sec)
+    
+
