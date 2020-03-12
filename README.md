@@ -1,5 +1,19 @@
 # mysql-db
+To install it, update the package index on your server with apt:
 
+    $ sudo apt update
+Then install the default package:
+
+    $ sudo apt install mysql-server
+    
+TO open up the MySQL prompt from your terminal
+
+    $ sudo mysql
+
+To create your database run the following command
+
+     mysql> CREATE DATABASE IF NOT EXISTS mickpower$quotes;
+       
 In order to see your database run the following command
 
     mysql> SELECT DATABASE();
@@ -13,7 +27,7 @@ In order to see your database run the following command
     
 As an example we are going to create a table called quotes within our database which will store the quotes that are being pulled from the daily script
 
-    CREATE TABLE IF NOT EXISTS quotes (
+    mysql> CREATE TABLE IF NOT EXISTS quotes (
     -> quote_id INT AUTO_INCREMENT PRIMARY KEY,
     -> 
     -> quote VARCHAR (255) NOT NULL,
