@@ -37,4 +37,24 @@ You should see something like above, if you see the following your table has sti
     Empty set (0.00 sec)
     
     
+Now to show the entire structure of what we just created you can enter
+
+    mysql> describe quotes;
+     
+Or
+
+    mysql> explain quotes;
+    
+Which will both return the following result which is the quotes table
+
+    +------------+--------------+------+-----+---------+----------------+
+    | Field      | Type         | Null | Key | Default | Extra          |
+    +------------+--------------+------+-----+---------+----------------+
+    | quote_id   | int(11)      | NO   | PRI | NULL    | auto_increment |
+    | quote      | varchar(255) | NO   |     | NULL    |                |
+    | quote_date | date         | YES  |     | NULL    |                |
+    | author     | varchar(255) | NO   |     | NULL    |                |
+    +------------+--------------+------+-----+---------+----------------+
+    4 rows in set (0.00 sec)
+    
     
