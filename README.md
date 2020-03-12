@@ -1,7 +1,9 @@
 # mysql-db
-To install it, update the package index on your server with apt:
+
+To install MySQL, update the package index on your server with apt:
 
     $ sudo apt update
+    
 Then install the default package:
 
     $ sudo apt install mysql-server
