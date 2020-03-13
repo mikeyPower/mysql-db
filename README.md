@@ -27,7 +27,7 @@ In order to see your database run the following command
     1 row in set (0.00 sec)
     
     
-As an example we are going to create a table called quotes within our database which will store the quotes that are being pulled from the daily script
+As an example we are going to create a table called quotes within our database which will store the quotes that are being pulled from the daily [script](https://github.com/mikeyPower/web-scrapper)
 
     mysql> CREATE TABLE IF NOT EXISTS quotes (
     -> quote_id INT AUTO_INCREMENT PRIMARY KEY,
