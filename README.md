@@ -95,3 +95,48 @@ We can now see this represented in the table below
     4 rows in set (0.00 sec)
     
 
+Now in order to start the connection within flask we will do the following
+
+    def connection():
+        dbconn = MySQLdb.connect(host = DB_HOST,
+                             user = DB_USERNAME,
+                             passwd = DB_PASSWORD,
+                             db = DB_NAME)
+        cur = dbconn.cursor()
+        return (cur, dbconn)
+        
+This will return both the cursor object and database connection in order to commit any changes we make to the DB. The following variables DB_HOST, DB_USERNAME, DB_PASSWORD and DB_NAME are stored as environment variables in order to keep them seperate of the source code.
+
+
+    DB_PASSWORD = os.environ.get('DB_PASSWORD')
+    DB_HOST = os.environ['DB_HOST']
+    DB_USERNAME = os.environ['DB_USERNAME']
+    DB_NAME = os.environ['DB_NAME']
+    
+Which are set in the wsgi configuration file as shown below
+
+
+    os.environ['DB_PASSWORD'] = '*****'
+    os.environ['DB_HOST'] = '*****'
+    os.environ['DB_USERNAME'] = '*****'
+    os.environ['DB_NAME'] = 'mickpower$quotes'
+    
+    
+After the connection is set we may now insert the quote that is pulled daily from our script directly into the database
+
+    @app.route('/',methods=['GET', 'POST'])
+    def index():
+
+        date = getTodaysDate()
+        quotes = quote()
+        cursor = connection()
+        cur = cursor[0]
+        db = cursor[1]
+        todays_date = datetime.datetime.now()
+        today = todays_date.strftime('%Y-%m-%d')
+        try:
+            cur.execute("INSERT INTO quotes(quote,quote_date,author) VALUES (%s, %s, %s)", (quotes[0], today, quotes[1]))
+            db.commit()
+        except:
+            print()
+        return render_template("index.html",quote=quotes[0],author=quotes[1],day=date)
