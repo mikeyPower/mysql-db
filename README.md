@@ -140,3 +140,14 @@ After the connection is set we may now insert the quote that is pulled daily fro
         except:
             print()
         return render_template("index.html",quote=quotes[0],author=quotes[1],day=date)
+        
+ To see if everything is working properly, let's inspect the database and we should see some records
+ 
+    mysql> select * from quotes;
+    +----------+-------------------------------------------------------+------------+----------------+
+    | quote_id | quote                                                 | quote_date | author         |
+    +----------+-------------------------------------------------------+------------+----------------+
+    |        1 | Fortune favors the prepared mind.                     | 2020-03-12 |  Louis Pasteur |
+    |        2 | My religion is very simple. My religion is kindness.  | 2020-03-13 |  Dalai Lama    |
+    +----------+-------------------------------------------------------+------------+----------------+
+    2 rows in set (0.01 sec)
