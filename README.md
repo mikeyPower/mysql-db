@@ -122,7 +122,7 @@ Which are set in the wsgi configuration file as shown below
     os.environ['DB_NAME'] = 'mickpower$quotes'
     
     
-After the connection is set we may now insert the quote that is pulled daily from our script directly into the database
+After the connection is set we may now insert the quote that is pulled daily from our [script](https://github.com/mikeyPower/web-scrapper) directly into the database
 
     @app.route('/',methods=['GET', 'POST'])
     def index():
@@ -151,3 +151,5 @@ After the connection is set we may now insert the quote that is pulled daily fro
     |        2 | My religion is very simple. My religion is kindness.  | 2020-03-13 |  Dalai Lama    |
     +----------+-------------------------------------------------------+------------+----------------+
     2 rows in set (0.01 sec)
+    
+To see all of this in action head over to this [repository](https://github.com/mikeyPower/cv_site)
