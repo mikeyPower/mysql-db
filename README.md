@@ -153,3 +153,28 @@ After the connection is set we may now insert the quote that is pulled daily fro
     2 rows in set (0.01 sec)
     
 To see all of this in action head over to this [repository](https://github.com/mikeyPower/cv_site)
+
+
+## To Run
+
+Open up the MySQL prompt from your terminal
+
+    $ sudo mysql
+
+To create your database run the following command or follow the steps outlined above
+
+    mysql> create database quotes;
+    mysql> use quotes;
+    mysql> source /path/to/file/quote_db.sql;
+
+Run the following shell script install the python modules needed
+
+    ./install.sh
+    
+Then finally run the following code to trigger the python script
+
+    python3 example.py 
+    
+In order to have the script fire every day head over to my repository on common [linux commands](https://github.com/mikeyPower/bashing-away) inorder to set up a cron tab
+
+
